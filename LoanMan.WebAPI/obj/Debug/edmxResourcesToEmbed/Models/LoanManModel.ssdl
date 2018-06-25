@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="LoanManModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tbl_Client">
+    <Key>
+      <PropertyRef Name="ClientId" />
+    </Key>
+    <Property Name="ClientId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Surname" Type="varchar" MaxLength="100" />
+    <Property Name="Firstname" Type="varchar" MaxLength="100" />
+    <Property Name="GenderId" Type="int" />
+    <Property Name="IDNumber" Type="varchar" MaxLength="100" />
+    <Property Name="Email" Type="varchar" MaxLength="100" />
+    <Property Name="MobileNumber" Type="varchar" MaxLength="50" />
+    <Property Name="TelephoneNumber" Type="varchar" MaxLength="50" />
+    <Property Name="DOB" Type="date" />
+    <Property Name="AddressId" Type="int" />
+    <Property Name="DateAdded" Type="datetime2" Precision="7" />
+  </EntityType>
+  <EntityType Name="tbl_Client_Address">
+    <Key>
+      <PropertyRef Name="AddressId" />
+    </Key>
+    <Property Name="AddressId" Type="int" Nullable="false" />
+    <Property Name="ClientId" Type="int" />
+    <Property Name="StreetAddress1" Type="varchar" MaxLength="100" />
+    <Property Name="StreetAddress2" Type="varchar" MaxLength="250" />
+    <Property Name="City" Type="varchar" MaxLength="50" />
+    <Property Name="CompanyName" Type="varchar" MaxLength="100" />
+    <Property Name="CompanyAddress" Type="varchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="tbl_Gender">
+    <Key>
+      <PropertyRef Name="GenderId" />
+    </Key>
+    <Property Name="GenderId" Type="int" Nullable="false" />
+    <Property Name="Gender" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tbl_Interest_Rate">
+    <Key>
+      <PropertyRef Name="InterestRateId" />
+    </Key>
+    <Property Name="InterestRateId" Type="int" Nullable="false" />
+    <Property Name="Interest" Type="int" />
+  </EntityType>
+  <EntityType Name="tbl_Loan">
+    <Key>
+      <PropertyRef Name="LoanId" />
+    </Key>
+    <Property Name="LoanId" Type="int" Nullable="false" />
+    <Property Name="ClientId" Type="int" />
+    <Property Name="LoanAmount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="InterestRateId" Type="int" />
+    <Property Name="RepaymentPeriod" Type="int" />
+    <Property Name="TotalPayable" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Instalment" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="LoanDate" Type="date" />
+    <Property Name="StartPaymentDate" Type="date" />
+    <Property Name="LastPaymentDate" Type="date" />
+  </EntityType>
+  <Association Name="FK_tbl_Client_Address_tbl_Client">
+    <End Role="tbl_Client" Type="Self.tbl_Client" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tbl_Client_Address" Type="Self.tbl_Client_Address" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Client">
+        <PropertyRef Name="ClientId" />
+      </Principal>
+      <Dependent Role="tbl_Client_Address">
+        <PropertyRef Name="ClientId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_Client_tbl_Client">
+    <End Role="tbl_Client" Type="Self.tbl_Client" Multiplicity="1" />
+    <End Role="tbl_Client1" Type="Self.tbl_Client" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Client">
+        <PropertyRef Name="ClientId" />
+      </Principal>
+      <Dependent Role="tbl_Client1">
+        <PropertyRef Name="ClientId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_Client_tbl_Gender">
+    <End Role="tbl_Gender" Type="Self.tbl_Gender" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tbl_Client" Type="Self.tbl_Client" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Gender">
+        <PropertyRef Name="GenderId" />
+      </Principal>
+      <Dependent Role="tbl_Client">
+        <PropertyRef Name="GenderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_Loan_tbl_Client">
+    <End Role="tbl_Client" Type="Self.tbl_Client" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tbl_Loan" Type="Self.tbl_Loan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Client">
+        <PropertyRef Name="ClientId" />
+      </Principal>
+      <Dependent Role="tbl_Loan">
+        <PropertyRef Name="ClientId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_Loan_tbl_Interest_Rate">
+    <End Role="tbl_Interest_Rate" Type="Self.tbl_Interest_Rate" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tbl_Loan" Type="Self.tbl_Loan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Interest_Rate">
+        <PropertyRef Name="InterestRateId" />
+      </Principal>
+      <Dependent Role="tbl_Loan">
+        <PropertyRef Name="InterestRateId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="LoanManModelStoreContainer">
+    <EntitySet Name="tbl_Client" EntityType="Self.tbl_Client" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Client_Address" EntityType="Self.tbl_Client_Address" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Gender" EntityType="Self.tbl_Gender" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Interest_Rate" EntityType="Self.tbl_Interest_Rate" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Loan" EntityType="Self.tbl_Loan" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_tbl_Client_Address_tbl_Client" Association="Self.FK_tbl_Client_Address_tbl_Client">
+      <End Role="tbl_Client" EntitySet="tbl_Client" />
+      <End Role="tbl_Client_Address" EntitySet="tbl_Client_Address" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_Client_tbl_Client" Association="Self.FK_tbl_Client_tbl_Client">
+      <End Role="tbl_Client" EntitySet="tbl_Client" />
+      <End Role="tbl_Client1" EntitySet="tbl_Client" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_Client_tbl_Gender" Association="Self.FK_tbl_Client_tbl_Gender">
+      <End Role="tbl_Gender" EntitySet="tbl_Gender" />
+      <End Role="tbl_Client" EntitySet="tbl_Client" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_Loan_tbl_Client" Association="Self.FK_tbl_Loan_tbl_Client">
+      <End Role="tbl_Client" EntitySet="tbl_Client" />
+      <End Role="tbl_Loan" EntitySet="tbl_Loan" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_Loan_tbl_Interest_Rate" Association="Self.FK_tbl_Loan_tbl_Interest_Rate">
+      <End Role="tbl_Interest_Rate" EntitySet="tbl_Interest_Rate" />
+      <End Role="tbl_Loan" EntitySet="tbl_Loan" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

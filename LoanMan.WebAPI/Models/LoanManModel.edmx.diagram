@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="cba3474ba51b4af6be584ee77a3960ef" Name="Diagram1" >
+        <EntityTypeShape EntityType="LoanManModel.tbl_Client" Width="1.5" PointX="3" PointY="3.5" />
+        <EntityTypeShape EntityType="LoanManModel.tbl_Client_Address" Width="1.5" PointX="5.25" PointY="8.375" />
+        <EntityTypeShape EntityType="LoanManModel.tbl_Gender" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="LoanManModel.tbl_Interest_Rate" Width="1.5" PointX="3" PointY="0.75" />
+        <EntityTypeShape EntityType="LoanManModel.tbl_Loan" Width="1.5" PointX="5.25" PointY="3.875" />
+        <AssociationConnector Association="LoanManModel.FK_tbl_Client_Address_tbl_Client" />
+        <AssociationConnector Association="LoanManModel.FK_tbl_Client_tbl_Client" />
+        <AssociationConnector Association="LoanManModel.FK_tbl_Client_tbl_Gender" />
+        <AssociationConnector Association="LoanManModel.FK_tbl_Loan_tbl_Client" />
+        <AssociationConnector Association="LoanManModel.FK_tbl_Loan_tbl_Interest_Rate" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
