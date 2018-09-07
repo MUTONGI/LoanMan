@@ -30,7 +30,7 @@ namespace LoanMan.WebAPI.Models
         public string MobileNumber { get; set; }
         public string TelephoneNumber { get; set; }
         public Nullable<System.DateTime> DOB { get; set; }
-        public Nullable<int> AddressId { get; set; }
+        public int AddressId { get; set; }
         public Nullable<System.DateTime> DateAdded { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

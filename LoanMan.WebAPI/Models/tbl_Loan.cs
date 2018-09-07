@@ -25,7 +25,7 @@ namespace LoanMan.WebAPI.Models
         public Nullable<System.DateTime> StartPaymentDate { get; set; }
         public Nullable<System.DateTime> LastPaymentDate { get; set; }
     
-        public virtual tbl_Client tbl_Client { get; set; }
         public virtual tbl_Interest_Rate tbl_Interest_Rate { get; set; }
+        public virtual tbl_Client tbl_Client { get; set; }
     }
 }

@@ -3,36 +3,6 @@
   <Alias Key="Model" Value="LoanManModel" />
   <Alias Key="Target" Value="LoanManModel.Store" />
   <EntityContainerMapping CdmEntityContainer="LoanManModelContainer" StorageEntityContainer="LoanManModelStoreContainer">
-    <EntitySetMapping Name="tbl_Client">
-      <EntityTypeMapping TypeName="LoanManModel.tbl_Client">
-        <MappingFragment StoreEntitySet="tbl_Client">
-          <ScalarProperty Name="DateAdded" ColumnName="DateAdded" />
-          <ScalarProperty Name="AddressId" ColumnName="AddressId" />
-          <ScalarProperty Name="DOB" ColumnName="DOB" />
-          <ScalarProperty Name="TelephoneNumber" ColumnName="TelephoneNumber" />
-          <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
-          <ScalarProperty Name="Email" ColumnName="Email" />
-          <ScalarProperty Name="IDNumber" ColumnName="IDNumber" />
-          <ScalarProperty Name="GenderId" ColumnName="GenderId" />
-          <ScalarProperty Name="Firstname" ColumnName="Firstname" />
-          <ScalarProperty Name="Surname" ColumnName="Surname" />
-          <ScalarProperty Name="ClientId" ColumnName="ClientId" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="tbl_Client_Address">
-      <EntityTypeMapping TypeName="LoanManModel.tbl_Client_Address">
-        <MappingFragment StoreEntitySet="tbl_Client_Address">
-          <ScalarProperty Name="CompanyAddress" ColumnName="CompanyAddress" />
-          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
-          <ScalarProperty Name="City" ColumnName="City" />
-          <ScalarProperty Name="StreetAddress2" ColumnName="StreetAddress2" />
-          <ScalarProperty Name="StreetAddress1" ColumnName="StreetAddress1" />
-          <ScalarProperty Name="ClientId" ColumnName="ClientId" />
-          <ScalarProperty Name="AddressId" ColumnName="AddressId" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="tbl_Gender">
       <EntityTypeMapping TypeName="LoanManModel.tbl_Gender">
         <MappingFragment StoreEntitySet="tbl_Gender">
@@ -62,6 +32,36 @@
           <ScalarProperty Name="LoanAmount" ColumnName="LoanAmount" />
           <ScalarProperty Name="ClientId" ColumnName="ClientId" />
           <ScalarProperty Name="LoanId" ColumnName="LoanId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Client_Address">
+      <EntityTypeMapping TypeName="LoanManModel.tbl_Client_Address">
+        <MappingFragment StoreEntitySet="tbl_Client_Address">
+          <ScalarProperty Name="CompanyAddress" ColumnName="CompanyAddress" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="StreetAddress2" ColumnName="StreetAddress2" />
+          <ScalarProperty Name="StreetAddress1" ColumnName="StreetAddress1" />
+          <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+          <ScalarProperty Name="AddressId" ColumnName="AddressId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Client">
+      <EntityTypeMapping TypeName="LoanManModel.tbl_Client">
+        <MappingFragment StoreEntitySet="tbl_Client">
+          <ScalarProperty Name="DateAdded" ColumnName="DateAdded" />
+          <ScalarProperty Name="AddressId" ColumnName="AddressId" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+          <ScalarProperty Name="TelephoneNumber" ColumnName="TelephoneNumber" />
+          <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="IDNumber" ColumnName="IDNumber" />
+          <ScalarProperty Name="GenderId" ColumnName="GenderId" />
+          <ScalarProperty Name="Firstname" ColumnName="Firstname" />
+          <ScalarProperty Name="Surname" ColumnName="Surname" />
+          <ScalarProperty Name="ClientId" ColumnName="ClientId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

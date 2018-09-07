@@ -73,17 +73,23 @@ namespace LoanMan.WebAPI.Controllers
         }
 
         // POST: api/Client
-        [ResponseType(typeof(tbl_Client))]
+        [ResponseType(typeof(void))]
         public IHttpActionResult Posttbl_Client(tbl_Client Client)
         {
             tbl_Client c = new tbl_Client();
             c.DateAdded = DateTime.Now;
             c.DOB = Client.DOB;
+            
 
 
             tbl_Client_Address ca = new tbl_Client_Address();
-            ca.StreetAddress1 = Client.tbl_Client_Address.StreetAddress1;
 
+            if (Client.tbl_Client_Address != null)
+            {
+                //ca.StreetAddress1 = Client.tbl_Client_Address.StreetAddress;
+            }
+            //
+            //string a = Client.tbl_Client_Address.StreetAddress1;
             db.tbl_Client_Address.Add(ca);
 
             db.tbl_Client.Add(c);

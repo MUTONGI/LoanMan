@@ -13,14 +13,14 @@
     <Property Name="MobileNumber" Type="varchar" MaxLength="50" />
     <Property Name="TelephoneNumber" Type="varchar" MaxLength="50" />
     <Property Name="DOB" Type="date" />
-    <Property Name="AddressId" Type="int" />
+    <Property Name="AddressId" Type="int" Nullable="false" />
     <Property Name="DateAdded" Type="datetime2" Precision="7" />
   </EntityType>
   <EntityType Name="tbl_Client_Address">
     <Key>
       <PropertyRef Name="AddressId" />
     </Key>
-    <Property Name="AddressId" Type="int" Nullable="false" />
+    <Property Name="AddressId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ClientId" Type="int" />
     <Property Name="StreetAddress1" Type="varchar" MaxLength="100" />
     <Property Name="StreetAddress2" Type="varchar" MaxLength="250" />
